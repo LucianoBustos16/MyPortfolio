@@ -4,20 +4,23 @@ import Button from "./ui/Button.astro";
 const navLinks = [
     {
         label: "Home",
+        id: "Home",
         href: "/"
     },
     {
-        label: "Experience",
+        label: "Experiencia",
+        id: "Experience",
         href: "#Experience"
     },
     {
-        label: "Projects",
+        label: "Proyectos",
+        id: "Projects",        
         href: "#MyProjects"
     }
 ]
 
 ---
-<header class="max-w-screen-xl m-auto py-4 flex justify-between items-center">
+<header class="max-w-screen-xl lg:max-w-4xl md:max-w-2xl m-auto py-4 flex justify-between items-center">
     <div class="logo">
         <a href="/" class="flex items-center">
             <img src="/logo.svg" class="h-8 mr-3" alt="Luchito Logo" width="32" height="32">
