@@ -1,0 +1,44 @@
+---
+import Button from "./ui/Button.astro";
+
+const navLinks = [
+    {
+        label: "Home",
+        href: "/"
+    },
+    {
+        label: "Experience",
+        href: "#Experience"
+    },
+    {
+        label: "Projects",
+        href: "#MyProjects"
+    }
+]
+
+---
+<header class="max-w-screen-xl m-auto py-4 flex justify-between items-center">
+    <div class="logo">
+        <a href="/" class="flex items-center">
+            <img src="/logo.svg" class="h-8 mr-3" alt="Luchito Logo" width="32" height="32">
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Luchito</span>
+        </a>
+    </div>
+
+    <nav class="hidden md:inline-flex gap-4 items-center">
+        <ul class="flex gap-4 text-white">
+            {navLinks.map(({ label, href }) => {
+                return (
+                <li
+                    class={``}
+                >
+                    <a href={href} class="hover:text-primary">
+                    {label}
+                    </a>
+                </li>
+                );
+            })}
+        </ul>
+        <!-- <Button Label="Download CV"/> -->
+    </nav>
+</header>

@@ -1,0 +1,41 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+import SectionContainer from "./SectionContainer.astro";
+import TitleSection from "./TitleSection.astro";
+
+const EXPERIENCE = [
+  {
+    date: "Actualmente...",
+    title: "Diseñador Ux/Ui",
+    company: "Banco de Córdoba",
+    description:
+      "Soy parte del equipo encargado de renovar la experiencia de usuario del homebanking. Colaboro estrechamente con desarrolladores, product owners y otros stakeholders para diseñar una solución que cumpla con los objetivos de negocio y las necesidades de los usuarios.",
+  },
+  { 
+    date: "Feb 2016 - Dic 2020",
+    title: "Analista funcional",
+    company: "Banco de Córdoba",
+    description:
+      "Fui responsable de diseñar y mantener una variedad de interfaces digitales, incluyendo el Homebanking, sistemas de turnos y cartelería digital. Mi proactividad me permitió identificar y solucionar problemas de usabilidad, optimizando la experiencia del usuario y asegurando el funcionamiento eficiente de las plataformas.",
+  },
+]
+
+---
+
+<SectionContainer id="Experience">
+    <TitleSection>
+        Experiencia laboral
+      </TitleSection>
+    <ol class="relative">                  
+        {
+            EXPERIENCE.map((experience) => (
+              <li class="">
+                <ExperienceItem {...experience} />
+              </li>
+            ))
+          }
+    </ol>
+</SectionContainer>
+
+
+
