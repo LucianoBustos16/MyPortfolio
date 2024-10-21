@@ -1,0 +1,29 @@
+---
+---
+
+<div class="dot size-2 rounded-full"></div>
+
+<style>
+:root{
+    --color-dot: #22c55e;
+}
+
+    .dot {
+    box-shadow: 0 0 20px #var(--color-dot);
+    animation: glow 1.5s infinite;
+    background: var(--color-dot);
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px var(--color-dot);
+    }
+    50% {
+        box-shadow: 0 0 10px var(--color-dot), 0 0 20px var(--color-dot);
+    }
+    100% {
+        box-shadow: 0 0 5px #var(--color-dot);
+    }
+}
+</style>
+
