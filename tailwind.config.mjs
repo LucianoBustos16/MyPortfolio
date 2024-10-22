@@ -5,6 +5,7 @@ export default {
 		extend: {
 			colors:{
 				primary: "var(--accent)",
+				primaryDark: "var(--accent-dark)",
 			}
 		},
 	},
