@@ -1,6 +1,7 @@
 ---
-import SectionContainer from "./SectionContainer.astro"
-import TitleSection from "./TitleSection.astro"
+import SectionContainer from "./SectionContainer.astro";
+import TitleSection from "./TitleSection.astro";
+import Dot from "./ui/Dot.astro";
 
 const TAGS = {
   ASTRO: {
@@ -11,73 +12,114 @@ const TAGS = {
     name: "Tailwind CSS",
     class: "bg-[#003159] text-white",
   },
+  WORDPRESS: {
+    name: "Wordpress",
+    class: "bg-[#000] text-white",
+  },
 }
 const PROJECTS = [
   {
-    title: "Luchito - Una hermosa libreria de cosas",
+    title: "LBDTw",
+    "isActive": "True",
     description:
-      " ",
-    link: "https://luchito.com.ar",
-    image: "/luchito.png",
+      "El nuevo blog de los hinchas de Belgrano. Simple, rápido y seguro.",
+    link: "https://lbdtw.pages.dev/",
+    image: "/lbdtw2024.webp",
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+  },
+  {
+    title: "Mi cofre",
+    "isActive": "True",
+    description:
+      "Mi biblioteca de recursos que puede ayudarte a encontrar herramientas creativas para mejorar tu flujo de trabajo y dar vida a las ideas más rápido.",
+    link: "https://micofre.luchito.com.ar",
+    image: "/luchito-mobile.webp",
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+  },
+  {
+    title: "Luchito Code",
+    "isActive": "True",
+    description:
+      "Mi propio CodePen, creado con la ayuda de Midudev ",
+    link: "https://code.luchito.com.ar",
+    image: "/codeluchito.webp",
     tags: [TAGS.ASTRO, TAGS.TAILWIND],
   },
   {
     title: "LBDTw",
     description:
-      "El blog de LBDTw, mi comunidad de hinchas de mi viejo y glorioso Belgrano",
-    link: "https://lbdtw.com.ar",
-    image: "/lbdtw.png",
-    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+      "El anitgüo blog de LBDTw, un sitio hecho en wordpress que nos acompañó muchos años.",
+    image: "/lbdtw2023.webp",
+    tags: [TAGS.WORDPRESS],
   },
 ]
+
+
 ---
 
 <SectionContainer id="MyProjects">
+  <TitleSection>
+    Proyectos
+  </TitleSection>
 
-    <TitleSection>
-        Proyectos
-      </TitleSection>
-
-    <div class="flex flex-col gap-y-16">
-        {
-          PROJECTS.map(({ image, title, description, tags, link }) => (
-          <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-        <div class="w-full md:w-1/2">
-          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-            <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
-          </div>
-        </div>
+    <div class="flex flex-col md:grid md:grid-cols-6 grid-rows-4 gap-4">
+        {PROJECTS.map((project, index) => {
+          const gridArea = [
+            index === 0 ? 'div1' : '', // First element
+            index === 1 ? 'div2' : '', // Second element
+            index === 2 ? 'div3' : '', // Third element
+            index === 3 ? 'div4' : '', // Fourth element
+          ];
       
-        <div class="w-full md:w-1/2 md:max-w-lg">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-            {title}
-          </h3>
-          <div class="flex flex-wrap mt-2">
-            <ul class="flex flex-row mb-2 gap-x-2">
-                {tags.map((tag) => (
-                  <li>
-                    <span
-                      class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-                    >
-                      {tag.name}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-      
-            <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
-            <footer class="flex items-end justify-start mt-4 gap-x-4">
-               
-              </footer>
-          </div>
-        </div>
-      </article>
-          ))
-        }
+          return (
+            <a href={project.link} target="_blank" class={`relative rounded-2xl overflow-clip group md:group-hover:-translate-y-1 md:group-hover:shadow-2xl transition duration-500 ease-in-out transform   lg:border lg:border-gray-800 lg:hover:border-gray-700 ${gridArea.join(' ')}`}>
+                <div class="absolute z-10 bottom-0 w-full px-4 py-10 lg:py-2 animate-fade-in animate-duration-250 duration-75 h-full flex flex-col justify-end" style="background: linear-gradient(transparent, #000000f5 75%)">
+                  <header class="flex items-center gap-2">
+                    <span>{project.isActive && <Dot/>}</span>
+                    <h2 class="font-bold text-balance text-lg md:text-2xl text-white [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">{project.title}
+                    </h2>
+                      
+                  </header>
+                    <p class="description transition ease-in-out transform text-white text-base md:text-lg max-w-[42ch] [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] group-hover:h-auto" style="transform: translateY(0);">{project.description}</p>
+                </div>
+                <img src={project.image} alt={project.title} class="w-full h-full object-cover aspect-video md:aspect-auto transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" />
+            </a>
+          );
+        })}
       </div>
-
 </SectionContainer>
 
 
 
+    <style>
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
 
+        }
+    
+    {/* .div2 { grid-area: 3 / 1 / 5 / 3; }
+    .div3 { grid-area: 3 / 3 / 5 / 5; }
+    .div4 { grid-area: 1 / 5 / 5 / 7; } */}
+
+    .div1 { grid-area: 1 / 1 / 3 / 5; }
+    .div2 { grid-area: 1 / 5 / 5 / 7; }
+    .div3 { grid-area: 3 / 3 / 5 / 5; }
+    .div4 { grid-area: 3 / 1 / 5 / 3; }
+    
+.description {
+  height: 0px;
+  overflow: hidden;
+  transition: height .5s ease-in-out; /* Agregamos una transición suave */
+  interpolate-size: allow-keywords;
+}
+
+.group:hover .description {
+  /* Al pasar el mouse, mostramos la descripción */
+  height: auto;
+}
+
+    </style>
