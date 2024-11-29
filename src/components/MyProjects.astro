@@ -23,7 +23,7 @@ const PROJECTS = [
     "isActive": "True",
     description:
       "El nuevo blog de los hinchas de Belgrano. Simple, rápido y seguro.",
-    link: "https://lbdtw.pages.dev/",
+    link: "https://lbdtw.com.ar/",
     image: "/lbdtw2024.webp",
     tags: [TAGS.ASTRO, TAGS.TAILWIND],
   },
@@ -74,8 +74,8 @@ const PROJECTS = [
           return (
             <a href={project.link} target="_blank" class={`relative rounded-2xl overflow-clip group md:group-hover:-translate-y-1 md:group-hover:shadow-2xl transition duration-500 ease-in-out transform   lg:border lg:border-gray-800 lg:hover:border-gray-700 ${gridArea.join(' ')}`}>
                 <div class="absolute z-10 bottom-0 w-full px-4 py-10 lg:py-2 animate-fade-in animate-duration-250 duration-75 h-full flex flex-col justify-end" style="background: linear-gradient(transparent, #000000f5 75%)">
-                  <header class="flex items-center gap-2">
-                    <span>{project.isActive && <Dot/>}</span>
+                  <header class="flex items-center">
+                    {project.isActive && <span class="mr-2"><Dot/></span>}
                     <h2 class="font-bold text-balance text-lg md:text-2xl text-white [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">{project.title}
                     </h2>
                       
